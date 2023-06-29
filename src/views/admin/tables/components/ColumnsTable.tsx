@@ -1,5 +1,4 @@
 import React from "react";
-import CardMenu from "components/card/CardMenu";
 import Card from "components/card";
 
 import {
@@ -12,21 +11,31 @@ import {
 } from "@tanstack/react-table";
 
 type RowObj = {
-  name: [string, boolean];
-  progress: string;
-  quantity: number;
-  date: string;
-};
+  contractId: number;
+  memberId: number;
+  memberName: string;
+  helperId: number;
+  helperName: string;
+  helperJobType: string;
+  targetName: string;
+  expense: number;
+  contractStatus: string;
+  deleteYn: string;
+  location: string;
+  careRange: string;
+  memberPhoneNumber: string;
+  helperPhoneNumber: string;
+}
 
 function ColumnsTable(props: { tableData: any }) {
   const { tableData } = props;
   const [sorting, setSorting] = React.useState<SortingState>([]);
   let defaultData = tableData;
   const columns = [
-    columnHelper.accessor("name", {
-      id: "name",
+    columnHelper.accessor("contractId", {
+      id: "contractId",
       header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">NAME</p>
+        <p className="text-sm font-bold text-gray-600 dark:text-white">계약자ID</p>
       ),
       cell: (info: any) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
@@ -34,11 +43,11 @@ function ColumnsTable(props: { tableData: any }) {
         </p>
       ),
     }),
-    columnHelper.accessor("progress", {
-      id: "progress",
+    columnHelper.accessor("memberId", {
+      id: "memberId",
       header: () => (
         <p className="text-sm font-bold text-gray-600 dark:text-white">
-          PROGRESS
+          고객ID
         </p>
       ),
       cell: (info) => (
@@ -47,11 +56,11 @@ function ColumnsTable(props: { tableData: any }) {
         </p>
       ),
     }),
-    columnHelper.accessor("quantity", {
-      id: "quantity",
+    columnHelper.accessor("memberName", {
+      id: "memberName",
       header: () => (
         <p className="text-sm font-bold text-gray-600 dark:text-white">
-          QUANTITY
+          고객명
         </p>
       ),
       cell: (info) => (
@@ -60,10 +69,10 @@ function ColumnsTable(props: { tableData: any }) {
         </p>
       ),
     }),
-    columnHelper.accessor("date", {
-      id: "date",
+    columnHelper.accessor("helperId", {
+      id: "helperId",
       header: () => (
-        <p className="text-sm font-bold text-gray-600 dark:text-white">DATE</p>
+        <p className="text-sm font-bold text-gray-600 dark:text-white">도우미ID</p>
       ),
       cell: (info) => (
         <p className="text-sm font-bold text-navy-700 dark:text-white">
@@ -72,6 +81,8 @@ function ColumnsTable(props: { tableData: any }) {
       ),
     }),
   ]; // eslint-disable-next-line
+  console.log("data1:",defaultData);
+
   const [data, setData] = React.useState(() => [...defaultData]);
   const table = useReactTable({
     data,
@@ -84,13 +95,16 @@ function ColumnsTable(props: { tableData: any }) {
     getSortedRowModel: getSortedRowModel(),
     debugTable: true,
   });
+
+  console.log("data2:",data);
   return (
     <Card extra={"w-full pb-10 p-4 h-full"}>
       <header className="relative flex items-center justify-between">
         <div className="text-xl font-bold text-navy-700 dark:text-white">
-          4-Columns Table
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            조회
+          </button>
         </div>
-        <CardMenu />
       </header>
 
       <div className="mt-8 overflow-x-scroll xl:overflow-x-hidden">
