@@ -10,7 +10,7 @@ import {
   IoMdNotificationsOutline,
   IoMdInformationCircleOutline,
 } from "react-icons/io";
-import avatar from "assets/img/avatars/avatar4.png";
+import avatar from "assets/img/avatars/avatar.jpg";
 
 const Navbar = (props: {
   onOpenSidenav: () => void;
@@ -93,7 +93,7 @@ const Navbar = (props: {
                 </div>
                 <div className="ml-2 flex h-full w-full flex-col justify-center rounded-lg px-1 text-sm">
                   <p className="mb-1 text-left text-base font-bold text-gray-900 dark:text-white">
-                    New Update: Horizon UI Dashboard PRO
+                    New Update: CAREMOA PRO
                   </p>
                   <p className="font-base text-left text-xs text-gray-900 dark:text-white">
                     A new update for your downloaded item is available!
@@ -107,7 +107,7 @@ const Navbar = (props: {
                 </div>
                 <div className="ml-2 flex h-full w-full flex-col justify-center rounded-lg px-1 text-sm">
                   <p className="mb-1 text-left text-base font-bold text-gray-900 dark:text-white">
-                    New Update: Horizon UI Dashboard PRO
+                    New Update: CAREMOA PRO
                   </p>
                   <p className="font-base text-left text-xs text-gray-900 dark:text-white">
                     A new update for your downloaded item is available!
@@ -127,34 +127,26 @@ const Navbar = (props: {
           }
           children={
             <div className="flex w-[350px] flex-col gap-2 rounded-[20px] bg-white p-4 shadow-xl shadow-shadow-500 dark:!bg-navy-700 dark:text-white dark:shadow-none">
-              <div
-                style={{
-                  backgroundImage: `url(${navbarimage})`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundSize: "cover",
-                }}
-                className="mb-2 aspect-video w-full rounded-lg"
-              />
               <a
                 target="blank"
-                href="https://horizon-ui.com/pro?ref=live-free-tailwind-react"
+                href=" "
                 className="px-full linear flex cursor-pointer items-center justify-center rounded-xl bg-brand-500 py-[11px] font-bold text-white transition duration-200 hover:bg-brand-600 hover:text-white active:bg-brand-700 dark:bg-brand-400 dark:hover:bg-brand-300 dark:active:bg-brand-200"
               >
-                Buy Horizon UI PRO
+                CAREMOA PRO
               </a>
               <a
                 target="blank"
-                href="https://horizon-ui.com/docs-tailwind/docs/react/installation?ref=live-free-tailwind-react"
+                href=" "
                 className="px-full linear flex cursor-pointer items-center justify-center rounded-xl border py-[11px] font-bold text-navy-700 transition duration-200 hover:bg-gray-200 hover:text-navy-700 dark:!border-white/10 dark:text-white dark:hover:bg-white/20 dark:hover:text-white dark:active:bg-white/10"
               >
                 See Documentation
               </a>
               <a
                 target="blank"
-                href="https://horizon-ui.com/?ref=live-free-tailwind-react"
+                href=" "
                 className="hover:bg-black px-full linear flex cursor-pointer items-center justify-center rounded-xl py-[11px] font-bold text-navy-700 transition duration-200 hover:text-navy-700 dark:text-white dark:hover:text-white"
               >
-                Try Horizon Free
+                Try CAREMOA Free
               </a>
             </div>
           }
@@ -193,7 +185,7 @@ const Navbar = (props: {
               <div className="mt-3 ml-4">
                 <div className="flex items-center gap-2">
                   <p className="text-sm font-bold text-navy-700 dark:text-white">
-                    👋 Hey, Adela
+                    👋 장원영
                   </p>{" "}
                 </div>
               </div>

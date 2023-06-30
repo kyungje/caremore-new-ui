@@ -3,15 +3,15 @@ import React from "react";
 // Admin Imports
 import MainDashboard from "views/admin/default";
 import NFTMarketplace from "views/admin/marketplace";
-import DataTables from "views/admin/tables";
+import DataTables from "views/admin/contracts";
 
 // Auth Imports
 import SignIn from "views/auth/SignIn";
 
 // Icon Imports
 import {
-  MdHome,
-  MdOutlineShoppingCart,
+  MdEmojiPeople,
+  MdHandshake,
   MdBarChart,
   MdLock,
 } from "react-icons/md";
@@ -21,14 +21,14 @@ const routes = [
     name: "도우미 구인",
     layout: "/admin",
     path: "default",
-    icon: <MdHome className="h-6 w-6" />,
+    icon: <MdEmojiPeople className="h-6 w-6" />,
     component: <MainDashboard />,
   },
   {
     name: "계약",
     layout: "/admin",
     path: "nft-marketplace",
-    icon: <MdOutlineShoppingCart className="h-6 w-6" />,
+    icon: <MdHandshake className="h-6 w-6" />,
     component: <NFTMarketplace />,
     secondary: true,
   },
