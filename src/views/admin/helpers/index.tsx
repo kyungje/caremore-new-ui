@@ -5,7 +5,7 @@ import ContractItem from "./variables/contractItem";
 import NormalModal from "./components/NormalModal";
 
 
-const Contracts = () => {
+const Helpers = () => {
 
     const [contracts, setContracts] = useState<ContractItem[]>([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -178,4 +178,4 @@ const Contracts = () => {
     );
 };
 
-export default Contracts;
+export default Helpers;
