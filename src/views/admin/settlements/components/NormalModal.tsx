@@ -4,13 +4,38 @@ import {MdCheckCircleOutline} from "react-icons/md";
 interface ModalProps {
     isOpen: boolean;
     onClose: () => void;
-    statusName : string
+    settlementState : string
+    settlementId : number
 }
 
-const NormalModal: React.FC<ModalProps> = ({isOpen, onClose, statusName}) => {
+const NormalModal: React.FC<ModalProps> = ({isOpen, onClose, settlementState, settlementId}) => {
     const modalClasses = `${
         isOpen ? 'fixed' : 'hidden'
     } top-0 left-0 right-0 z-50 w-full overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full flex items-center justify-center`;
+
+    const accept = async () => {
+        try{
+            const settlementData = {
+                id : settlementId,
+                settlementState : settlementState
+            };
+
+            console.log("settlementData : ",settlementData);
+
+            const response = await fetch('http://a4012beb6509f4d2e8bd8fb783d8229b-1946401046.ap-northeast-2.elb.amazonaws.com:8080/settlement/settlements-status',{
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(settlementData)
+            });
+            if(response.ok) alert("정산 승인 완료되었습니다.");
+            onClose();
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+        onClose();
+    };
 
     return (
         <div id="defaultModal"  aria-hidden="true"
@@ -19,23 +44,19 @@ const NormalModal: React.FC<ModalProps> = ({isOpen, onClose, statusName}) => {
                 <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
                     <div className="p-6 flex items-center justify-center border-b rounded-t dark:border-gray-600">
                         <MdCheckCircleOutline className="h-9 w-9" />
-                        {statusName === '클레임' ? '  클레임을 작성 하시겠습니까?' : null}
                     </div>
                     <div className="p-6 space-y-6">
-                        {statusName !== '클레임' ?
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white flex items-center justify-center">
-                                {statusName} 처리 하시겠습니까?
-                            </h3>
-                            :
-                            <textarea id="comment"
-                                  className="w-full px-0 text-sm text-gray-900 bg-white border-d dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
-                                  placeholder="클레임 작성..." required></textarea>}
+
+                        <h3 className="text-xl font-semibold text-gray-900 dark:text-white flex items-center justify-center">
+                            승인 처리 하시겠습니까?
+                        </h3>
+
                     </div>
                     <div
                         className="text-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                         <button data-modal-hide="staticModal" type="button"
                                 className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                            onClick={onClose}>
+                            onClick={accept}>
                             확인
                         </button>
                         <button data-modal-hide="staticModal" type="button"
